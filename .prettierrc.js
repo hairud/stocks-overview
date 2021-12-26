@@ -1,0 +1,12 @@
+const config = {
+  semi: true,
+  tabWidth: 2,
+  endOfLine: 'lf',
+  printWidth: 100,
+  singleQuote: true,
+  trailingComma: 'all',
+  arrowParens: 'always',
+  jsxBracketSameLine: false,
+};
+
+module.exports = config;
