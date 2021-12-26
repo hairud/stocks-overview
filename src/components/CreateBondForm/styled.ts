@@ -1,23 +1,53 @@
 import styled from 'styled-components';
+import { COLORS } from '#constants/colors';
 
-const Container = styled.div`
-  height: 204px;
-  width: 100%;
-  padding: 24px;
-  max-width: 740px;
-  border: 1px solid #151515;
-  border-radius: 4px;
-`;
-
-const Row = styled.div`
+const Background = styled.div`
+  height: 100vh;
+  width: 100vw;
+  background: ${COLORS.BLACK}99;
+  position: fixed;
+  top: 0px;
+  left: 0px;
   display: flex;
   flex-direction: row;
-  margin: 24px 0px 0px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 3;
 `;
 
-const InputWrap = styled.div`
-  min-width: calc((100% - 24px) / 2);
-  margin: 0px 12px;
+const Container = styled.div`
+  width: 500px;
+  padding: 24px;
+  border-radius: 4px;
+  background: ${COLORS.WHITE};
+  box-shadow: 0 0 12px 0px;
+
+  &:hover {
+    cursor: default;
+  }
+`;
+
+const Title = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 16px;
+`;
+
+const Content = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  & > * {
+    margin-bottom: 12px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
 `;
 
 const ButtonWrap = styled.div`
@@ -27,4 +57,4 @@ const ButtonWrap = styled.div`
   justify-content: flex-end;
 `;
 
-export { Container, Row, InputWrap, ButtonWrap };
+export { Background, Container, Title, Content, ButtonWrap };

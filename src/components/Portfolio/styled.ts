@@ -12,8 +12,16 @@ const Row = styled.div<{ container?: boolean }>`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
+
+  & > * {
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0px;
+    }
+  }
 `;
 
 export { Row, Column };

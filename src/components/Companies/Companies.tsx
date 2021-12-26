@@ -40,14 +40,8 @@ const Companies = () => {
           </tr>
         </thead>
         <tbody>
-          {sortedPortfolio.map(({ name, ticker, totalPrice }, index) => (
-            <CompaniesTableRow
-              key={name}
-              name={name}
-              ticker={ticker}
-              totalPrice={totalPrice}
-              isOdd={!!(index % 2)}
-            />
+          {sortedPortfolio.map(({ name, ticker, totalPrice }) => (
+            <CompaniesTableRow key={name} name={name} ticker={ticker} totalPrice={totalPrice} />
           ))}
         </tbody>
       </S.Table>

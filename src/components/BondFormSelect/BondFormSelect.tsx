@@ -30,4 +30,4 @@ const BondFormSelect = ({
   </S.Select>
 );
 
-export default BondFormSelect;
+export { BondFormSelect };

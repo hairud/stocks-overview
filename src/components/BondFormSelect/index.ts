@@ -1,3 +1,3 @@
-import BondFormSelect from './BondFormSelect';
+import { BondFormSelect } from './BondFormSelect';
 
-export default BondFormSelect;
+export { BondFormSelect };

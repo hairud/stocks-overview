@@ -1,18 +1,23 @@
 import { useMemo } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
 import { selectPortfolio } from '#store/selectors';
 import { getChartData } from '#helpers/getChartData';
 import { BondCurrencies as BondCurrenciesEnum } from '#constants/bonds';
 import { ChartWrap } from '#components/ChartWrap';
+import { CHART_COLORS } from '#constants/colors';
+
+import money from '#assets/money.png';
+
+import * as S from './styled';
 
 const BondCurrencies = () => {
   const portfolio = useSelector(selectPortfolio);
 
   const data = useMemo(() => {
     const chartData = getChartData({
-      colors: ['darkgreen', 'deepskyblue', 'grey'],
+      colors: [CHART_COLORS.GREEN, CHART_COLORS.RED, CHART_COLORS.YELLOW],
       categoryLabels: BondCurrenciesEnum,
       portfolio,
       chartLabel: 'по валюте',
@@ -24,9 +29,11 @@ const BondCurrencies = () => {
 
   return (
     <ChartWrap size="small">
-      <Pie
+      <S.Image src={money} />
+      <Doughnut
         data={data}
         options={{
+          cutout: '80%',
           responsive: true,
           maintainAspectRatio: false,
         }}

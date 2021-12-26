@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '#constants/colors';
 
 const Container = styled.div`
   padding: 24px;
@@ -6,7 +7,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background: #fff;
+  background: ${COLORS.WHITE};
   border-radius: 8px;
 `;
 

@@ -31,18 +31,20 @@ const getChartData = ({
   const entries = Object.entries(totalPriceByField);
   const total = entries.reduce((prev, [, value]) => prev + value, 0);
 
-  entries.forEach(([key, value]) => {
-    initialChartData.labels.push(categoryLabels[key]);
-    initialChartData.data.push(((value / total) * 100).toFixed(2));
-  });
+  entries
+    .sort(([, value1], [, value2]) => value2 - value1)
+    .forEach(([key, value]) => {
+      initialChartData.labels.push(categoryLabels[key]);
+      initialChartData.data.push(((value / total) * 100).toFixed(2));
+    });
 
   return {
     labels: initialChartData.labels,
     datasets: [
       {
         label: chartLabel,
-        data: initialChartData.data,
         backgroundColor: colors,
+        data: initialChartData.data,
       },
     ],
   };

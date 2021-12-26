@@ -6,7 +6,6 @@ import { Companies } from '#components/Companies';
 import { BondCompanyTypes } from '#components/BondCompanyTypes';
 import { BondCurrencies } from '#components/BondCurrencies';
 import { BondSafeTypes } from '#components/BondSafeTypes';
-import { CreateBondForm } from '#components/CreateBondForm';
 
 import * as S from './styled';
 
@@ -21,7 +20,6 @@ const Portfolio = () => {
     <S.Row container>
       <S.Column>
         <Companies />
-        <CreateBondForm />
       </S.Column>
       <S.Column>
         <S.Row>

@@ -1,6 +1,7 @@
 import { Link as RouterLink } from 'react-router-dom';
-
 import styled from 'styled-components';
+
+import { COLORS } from '#constants/colors';
 
 const Header = styled.div`
   display: flex;
@@ -8,12 +9,13 @@ const Header = styled.div`
   align-items: center;
   justify-content: space-between;
   height: 44px;
-  background-color: #fff;
-  box-shadow: 0 0 2.5px #151515;
-  padding: 0px 12px;
+  background-color: ${COLORS.WHITE};
+  box-shadow: ${COLORS.BLACK} 0 0 5px 0px;
+  padding: 0px 24px;
+  box-sizing: border-box;
 `;
 
-const Logo = styled.img`
+const Image = styled.img`
   display: block;
   max-height: 40px;
 `;
@@ -21,7 +23,6 @@ const Logo = styled.img`
 const Title = styled.div`
   text-transform: uppercase;
   font-weight: bold;
-  margin-left: 12px;
 `;
 
 const Link = styled(RouterLink)`
@@ -35,6 +36,21 @@ const Row = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+
+  & > * {
+    margin-right: 8px;
+
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
 `;
 
-export { Header, Logo, Title, Link, Row };
+const HeaderIcon = styled.img`
+  max-height: 20px;
+  min-height: 20px;
+  fill: ${COLORS.BLACK};
+  cursor: pointer;
+`;
+
+export { Header, Image, Title, HeaderIcon, Link, Row };

@@ -1,11 +1,16 @@
 import { useMemo } from 'react';
-import { Pie } from 'react-chartjs-2';
+import { Doughnut } from 'react-chartjs-2';
 import { useSelector } from 'react-redux';
 
 import { selectBonds, selectPortfolio } from '#store/selectors';
 import { getChartData } from '#helpers/getChartData';
-import { BondSafeTypes as BondSafeTypesEnum } from '#constants/bonds';
+import { BondSafeTypesNames } from '#constants/bonds';
 import { ChartWrap } from '#components/ChartWrap';
+import { CHART_COLORS } from '#constants/colors';
+
+import risk from '#assets/risk.png';
+
+import * as S from './styled';
 
 const BondSafeTypes = () => {
   const bonds = useSelector(selectBonds);
@@ -13,10 +18,10 @@ const BondSafeTypes = () => {
 
   const data = useMemo(() => {
     const chartData = getChartData({
-      colors: ['darkgreen', 'deepskyblue', 'grey'],
+      colors: [CHART_COLORS.GREEN, CHART_COLORS.RED, CHART_COLORS.YELLOW],
       portfolio,
       chartLabel: 'по типу инвестиций',
-      categoryLabels: BondSafeTypesEnum,
+      categoryLabels: BondSafeTypesNames,
       getFieldToSum: (portfolioItem) => {
         const bond = bonds[portfolioItem.ticker];
         return bond?.safeType || '';
@@ -28,9 +33,11 @@ const BondSafeTypes = () => {
 
   return (
     <ChartWrap size="small">
-      <Pie
+      <S.Image src={risk} />
+      <Doughnut
         data={data}
         options={{
+          cutout: '80%',
           responsive: true,
           maintainAspectRatio: false,
         }}

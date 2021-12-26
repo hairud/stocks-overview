@@ -11,6 +11,8 @@ import { Header } from '#components/Header';
 import * as S from './styled';
 
 import 'react-toastify/dist/ReactToastify.css';
+import { CreateBondForm } from '#components/CreateBondForm';
+import { Category } from '#pages/Category';
 
 const App = () => (
   <StoreProvider store={configuredStore}>
@@ -18,10 +20,14 @@ const App = () => (
     <S.GlobalStyle />
     <BrowserRouter>
       <Header />
+      <CreateBondForm />
       <S.Container>
         <Switch>
           <Route path="/auth">
             <Auth />
+          </Route>
+          <Route path="/category/:category">
+            <Category />
           </Route>
           <Route path="/">
             <Overview />

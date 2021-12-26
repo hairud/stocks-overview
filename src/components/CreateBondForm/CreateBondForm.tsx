@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { Input } from '#components/Input';
 import { Button } from '#components/Button';
@@ -7,10 +7,15 @@ import { createNewBond } from '#store/asyncThunks';
 
 import * as S from './styled';
 import { BondSafeTypes, BondCompanyTypes } from '#constants/bonds';
-import BondFormSelect from '#components/BondFormSelect';
+import { BondFormSelect } from '#components/BondFormSelect';
+import { selectIsCreateBondFormOpen } from '#store/selectors';
+import { closeCreateBondForm } from '#store/slice';
 
 const CreateBondForm = () => {
   const dispatch = useDispatch();
+
+  const isFormOpen = useSelector(selectIsCreateBondFormOpen);
+
   const [ticker, setTicker] = useState('');
   const [image, setImage] = useState('');
   const [bondType, setBondType] = useState('-');
@@ -20,18 +25,30 @@ const CreateBondForm = () => {
     dispatch(createNewBond({ ticker, image, type: bondType, category: bondCategory }));
   };
 
+  const handleBackgroundClick = () => {
+    dispatch(closeCreateBondForm());
+  };
+
+  const handleContentClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
+  if (!isFormOpen) {
+    return null;
+  }
+
   return (
-    <S.Container>
-      <span>Добавить ценную бумагу</span>
-      <S.Row>
-        <Input
-          placeholder="Тикер"
-          value={ticker}
-          onChange={(e) => {
-            setTicker(e.target.value);
-          }}
-        />
-        <S.InputWrap>
+    <S.Background onClick={handleBackgroundClick}>
+      <S.Container onClick={handleContentClick}>
+        <S.Title>Добавление ценной бумаги</S.Title>
+        <S.Content>
+          <Input
+            placeholder="Тикер"
+            value={ticker}
+            onChange={(e) => {
+              setTicker(e.target.value);
+            }}
+          />
           <Input
             placeholder="Лого"
             value={image}
@@ -39,26 +56,22 @@ const CreateBondForm = () => {
               setImage(e.target.value);
             }}
           />
-        </S.InputWrap>
-      </S.Row>
-      <S.Row>
-        <BondFormSelect
-          value={bondType}
-          options={BondSafeTypes}
-          changeValue={setBondType}
-          defaultOptionName="Тип бумаги"
-        />
-        <BondFormSelect
-          value={bondCategory}
-          options={BondCompanyTypes}
-          changeValue={setBondCategory}
-          defaultOptionName="Сектор компании"
-        />
-        <S.ButtonWrap>
+          <BondFormSelect
+            value={bondType}
+            options={BondSafeTypes}
+            changeValue={setBondType}
+            defaultOptionName="Тип бумаги"
+          />
+          <BondFormSelect
+            value={bondCategory}
+            options={BondCompanyTypes}
+            changeValue={setBondCategory}
+            defaultOptionName="Сектор компании"
+          />
           <Button onClick={createBond}>Добавить</Button>
-        </S.ButtonWrap>
-      </S.Row>
-    </S.Container>
+        </S.Content>
+      </S.Container>
+    </S.Background>
   );
 };
 

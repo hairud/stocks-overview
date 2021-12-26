@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import { COLORS } from '#constants/colors';
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -6,7 +7,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    color: #151515;
+    color: ${COLORS.BLACK};
   }
   * {
     box-sizing: border-box;

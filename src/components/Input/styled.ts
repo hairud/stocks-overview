@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { COLORS } from '#constants/colors';
 
 const Input = styled.input`
   width: 100%;
@@ -7,7 +8,11 @@ const Input = styled.input`
   font: inherit;
   border-radius: 4px;
   outline: none;
-  border: 1px solid #151515;
+  border: 1px solid ${COLORS.BLACK};
+
+  &::placeholder {
+    color: ${COLORS.BLACK}99;
+  }
 `;
 
 export { Input };

@@ -4,14 +4,18 @@ import { LOCAL_STORAGE_TOKEN_KEY } from '#constants/localStorage';
 import { Portfolio } from '#types/portfolio';
 import { BondsInfo } from '#types/bonds';
 
-const initialState: {
+interface InitialState {
   apiToken: string | null;
   portfolio: Portfolio;
   bonds: BondsInfo;
-} = {
+  isCreateBondFormOpen: boolean;
+}
+
+const initialState: InitialState = {
   apiToken: localStorage.getItem(LOCAL_STORAGE_TOKEN_KEY),
   portfolio: [],
   bonds: {},
+  isCreateBondFormOpen: false,
 };
 
 /* eslint-disable no-param-reassign */
@@ -28,10 +32,17 @@ export const appSlice = createSlice({
     setBondsInfo(state, { payload: { bonds } }) {
       state.bonds = bonds;
     },
+    openCreateBondForm(state) {
+      state.isCreateBondFormOpen = true;
+    },
+    closeCreateBondForm(state) {
+      state.isCreateBondFormOpen = false;
+    },
   },
   extraReducers: {},
 });
 
-export const { setApiToken, setPortfolio, setBondsInfo } = appSlice.actions;
+export const { setApiToken, setPortfolio, setBondsInfo, openCreateBondForm, closeCreateBondForm } =
+  appSlice.actions;
 
 export default appSlice.reducer;

@@ -16,7 +16,7 @@ const TABLE_FIELDS = [
   { sortField: SortFields.Name, name: 'Название' },
   { sortField: SortFields.SafeType, name: 'Тип' },
   { sortField: SortFields.CompanyType, name: 'Сектор' },
-  { sortField: SortFields.Price, name: 'Цена' },
+  { sortField: SortFields.Price, name: 'Цена, ₽' },
 ];
 
 export { TABLE_FIELDS, SortFields, SortOrder };

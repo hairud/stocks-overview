@@ -1,13 +1,13 @@
 import styled from 'styled-components';
+import { COLORS } from '#constants/colors';
 
 const TableContainer = styled.div`
-  height: calc(100% - 228px);
-  max-height: calc(100% - 228px);
+  height: 100%
   max-width: 740px;
   min-width: 740px;
   overflow: scroll;
-  margin-bottom: 24px;
-  border: 1px solid #000;
+  box-shadow: ${COLORS.BLACK} 0 0 5px 0px;
+  border-radius: 8px;
 `;
 
 const TableHeaderCell = styled.th`
@@ -15,7 +15,7 @@ const TableHeaderCell = styled.th`
   position: sticky;
   top: 0;
   padding: 8px;
-  background: linear-gradient(to bottom, #e2e3e4 94%, black);
+  background: linear-gradient(to bottom, ${COLORS.WHITE} 97%, ${COLORS.BLACK});
 `;
 
 const Table = styled.table`

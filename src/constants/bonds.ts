@@ -1,10 +1,43 @@
 enum BondSafeTypes {
+  Risk = 'Risk',
+  Invest = 'Invest',
+  Safe = 'Safe',
+}
+
+enum BondSafeTypesNames {
   Risk = 'Спекулятивная',
   Invest = 'Инвестиционная',
   Safe = 'Хеджирующая',
 }
 
 enum BondCompanyTypes {
+  Games = 'Games',
+  SemiConductors = 'SemiConductors',
+  Fund = 'Fund',
+  Goods = 'Goods',
+  ItManufacturer = 'ItManufacturer',
+  It = 'It',
+  ItAI = 'ItAI',
+  RawMaterial = 'RawMaterial',
+  Auto = 'Auto',
+  Avia = 'Avia',
+  Defence = 'Defence',
+  RealEstate = 'RealEstate',
+  Finance = 'Finance',
+  Crypto = 'Crypto',
+  Oil = 'Oil',
+  Cloth = 'Cloth',
+  Food = 'Food',
+  HomeGoods = 'HomeGoods',
+  Chemical = 'Chemical',
+  Cloud = 'Cloud',
+  Advertising = 'Advertising',
+  Analytics = 'Analytics',
+  Technic = 'Technic',
+  Media = 'Media',
+}
+
+enum BondCompanyTypesNames {
   Games = 'Игры',
   SemiConductors = 'Полупроводники',
   Fund = 'Фонд',
@@ -31,10 +64,44 @@ enum BondCompanyTypes {
   Media = 'Медиа',
 }
 
+enum BondCompanyTypesByNames {
+  'Игры' = 'Games',
+  'Полупроводники' = 'SemiConductors',
+  'Фонд' = 'Fund',
+  'Товары' = 'Goods',
+  'Аппаратное обеспечение' = 'ItManufacturer',
+  'ПО' = 'It',
+  'ИИ' = 'ItAI',
+  'Сырье' = 'RawMaterial',
+  'Автомобилестроение' = 'Auto',
+  'Авиация' = 'Avia',
+  'Вооружение' = 'Defence',
+  'Недвижимость' = 'RealEstate',
+  'Финансы' = 'Finance',
+  'Криптовалюты' = 'Crypto',
+  'Нефть' = 'Oil',
+  'Одежда' = 'Cloth',
+  'Еда' = 'Food',
+  'Товары для дома' = 'HomeGoods',
+  'Химическая промышленность' = 'Chemical',
+  'Облачные решения' = 'Cloud',
+  'Реклама' = 'Advertising',
+  'Аналитика' = 'Analytics',
+  'Техника' = 'Technic',
+  'Медиа' = 'Media',
+}
+
 enum BondCurrencies {
   USD = 'USD',
   EUR = 'EUR',
   RUB = 'RUB',
 }
 
-export { BondSafeTypes, BondCompanyTypes, BondCurrencies };
+export {
+  BondSafeTypes,
+  BondCurrencies,
+  BondCompanyTypes,
+  BondSafeTypesNames,
+  BondCompanyTypesNames,
+  BondCompanyTypesByNames,
+};
