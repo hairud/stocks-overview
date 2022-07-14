@@ -23,7 +23,7 @@ const BondCompanyTypes = () => {
 
   const data = useMemo(() => {
     const portfolioWithoutFunds = portfolio.filter(
-      ({ ticker }) => bonds[ticker].companyType !== BondCompanyTypesEnum.Fund,
+      ({ ticker }) => bonds[ticker]?.companyType !== BondCompanyTypesEnum.Fund,
     );
 
     const chartData = getChartData({
@@ -54,7 +54,7 @@ const BondCompanyTypes = () => {
       getFieldToSum: (portfolioItem) => {
         const bondInfo = bonds[portfolioItem.ticker];
 
-        return bondInfo.companyType;
+        return bondInfo?.companyType;
       },
     });
 
